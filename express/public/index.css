@@ -1,0 +1,89 @@
+.wrapper {
+  gap: 1rem;
+  padding: 1rem 1.4rem;
+}
+
+ul, li {
+  list-style: none;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button, .btn {
+  cursor: pointer;
+  background: none;
+  border: 1px solid #999;
+  border-radius: 20px;
+  padding: .4rem .8rem;
+  font-weight: 600;
+  transition: all .3s ease-in-out;
+}
+
+button:hover, .btn:hover {
+  color: #fff;
+  background-color: #000;
+  border-color: #000;
+}
+
+form {
+  flex-direction: column;
+  gap: .4rem;
+  display: flex;
+}
+
+label {
+  flex-direction: column;
+  display: flex;
+}
+
+input, textarea {
+  border: 1px solid #999;
+  border-radius: 20px;
+  width: 80%;
+  padding: .4rem .8rem;
+}
+
+label > input, label > textarea {
+  margin-top: .4rem;
+}
+
+textarea {
+  resize: none;
+  min-height: 150px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+tr, td, th {
+  border: 3px double #adadad;
+}
+
+.detail__container {
+  margin-block: 2rem;
+}
+
+.btn__group {
+  justify-content: right;
+  display: flex;
+}
+
+p > span {
+  font-weight: bold;
+}
+
+.btn__pagenation {
+  border: unset;
+  padding: .8rem;
+}
+
+.btn__pagenation:hover {
+  background-color: unset;
+  color: unset;
+}
+/*# sourceMappingURL=index.css.map */
