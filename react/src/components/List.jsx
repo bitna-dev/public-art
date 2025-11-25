@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Pagination from "./Pagination";
 
-const List = ({ setMode, mode, setPicked }) => {
+const List = ({ setMode, mode, setPicked, picked }) => {
 	const [items, setItems] = useState([]);
 	const [page, setPage] = useState(1);
 	const [hasMore, setHasMore] = useState(false);
@@ -60,6 +60,7 @@ const List = ({ setMode, mode, setPicked }) => {
 							style={{ cursor: "pointer" }}
 							key={item.art_id}
 							onClick={() => {
+								if (mode === "detail" && picked?.art_id == item.art_id) return;
 								setPicked(item);
 								setMode("detail");
 							}}

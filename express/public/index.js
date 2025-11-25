@@ -1256,7 +1256,8 @@ const App = (props)=>{
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _listDefault.default), {
                 setMode: setMode,
                 mode: mode,
-                setPicked: setPicked
+                setPicked: setPicked,
+                picked: picked
             }, void 0, false, {
                 fileName: "src/components/App.js",
                 lineNumber: 13,
@@ -1304,7 +1305,7 @@ var _react = require("react");
 var _reactDefault = parcelHelpers.interopDefault(_react);
 var _pagination = require("./Pagination");
 var _paginationDefault = parcelHelpers.interopDefault(_pagination);
-const List = ({ setMode, mode, setPicked })=>{
+const List = ({ setMode, mode, setPicked, picked })=>{
     const [items, setItems] = (0, _react.useState)([]);
     const [page, setPage] = (0, _react.useState)(1);
     const [hasMore, setHasMore] = (0, _react.useState)(false);
@@ -1443,6 +1444,7 @@ const List = ({ setMode, mode, setPicked })=>{
                                     cursor: "pointer"
                                 },
                                 onClick: ()=>{
+                                    if (mode === "detail" && picked?.art_id == item.art_id) return;
                                     setPicked(item);
                                     setMode("detail");
                                 },
@@ -1451,28 +1453,28 @@ const List = ({ setMode, mode, setPicked })=>{
                                         children: (page - 1) * 10 + (idx + 1)
                                     }, void 0, false, {
                                         fileName: "src/components/List.jsx",
-                                        lineNumber: 67,
+                                        lineNumber: 68,
                                         columnNumber: 8
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: item.title
                                     }, void 0, false, {
                                         fileName: "src/components/List.jsx",
-                                        lineNumber: 68,
+                                        lineNumber: 69,
                                         columnNumber: 8
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: item.neighbourhood
                                     }, void 0, false, {
                                         fileName: "src/components/List.jsx",
-                                        lineNumber: 69,
+                                        lineNumber: 70,
                                         columnNumber: 8
                                     }, undefined),
                                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("td", {
                                         children: item.status
                                     }, void 0, false, {
                                         fileName: "src/components/List.jsx",
-                                        lineNumber: 70,
+                                        lineNumber: 71,
                                         columnNumber: 8
                                     }, undefined)
                                 ]
@@ -1498,7 +1500,7 @@ const List = ({ setMode, mode, setPicked })=>{
                 hasMore: hasMore
             }, void 0, false, {
                 fileName: "src/components/List.jsx",
-                lineNumber: 75,
+                lineNumber: 76,
                 columnNumber: 4
             }, undefined)
         ]

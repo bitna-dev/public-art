@@ -10,7 +10,7 @@ const App = (props) => {
 
 	return (
 		<div className="wrapper">
-			<List setMode={setMode} mode={mode} setPicked={setPicked} />
+			<List setMode={setMode} mode={mode} setPicked={setPicked} picked={picked} />
 			{mode == "detail" && <Detail setMode={setMode} picked={picked} setPicked={setPicked} />}
 			{mode == "edit" && <Edit setMode={setMode} picked={picked} setPicked={setPicked} />}
 			{mode == "create" && <Create setMode={setMode} />}
