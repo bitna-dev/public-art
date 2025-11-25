@@ -4,6 +4,7 @@
 	"description": "",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
+		"dev": "rm -rf .parcel-cache && npx parcel watch src/index.js --dist-dir ../express/public",
 		"start": "rm -rf .parcel-cache && npx parcel watch --no-hmr src/index.js --dist-dir ../express/public"
 	},
 	"keywords": [],
