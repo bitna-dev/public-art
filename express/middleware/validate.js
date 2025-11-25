@@ -20,11 +20,14 @@ export const validateArtBody = (req, res, next) => {
 		height,
 		photo_url,
 	} = req.body;
-	if (!title || title.trim().length === 0) return res.status(400).json({ error: "Title is required." });
+
+	if (title !== undefined && title.trim().length === 0)
+		return res.status(400).json({ error: "Title must be longer than 1 character." });
+
 	if (!status || status.trim().length === 0) return res.status(400).json({ error: "Status is required." });
 
-	if (!site_address || site_address.trim().length === 0)
-		return res.status(400).json({ error: "Site address is required." });
+	if (site_address !== undefined && site_address.trim().length === 0)
+		return res.status(400).json({ error: "Site address must be longer than 1 character." });
 
 	if (!neighbourhood || neighbourhood.trim().length === 0)
 		return res.status(400).json({ error: "Neighbourhood is required." });
@@ -34,9 +37,6 @@ export const validateArtBody = (req, res, next) => {
 
 	if (artist_statement !== undefined && artist_statement.trim().length <= 10)
 		return res.status(400).json({ error: "Artist statement must be longer than 10 characters." });
-
-	if (!year_of_installation || isNaN(Number(year_of_installation)))
-		return res.status(400).json({ error: "Year of installation must be a valid number." });
 
 	if (width !== undefined && isNaN(Number(width))) return res.status(400).json({ error: "Width must be a number." });
 
@@ -62,34 +62,6 @@ export const validateEditArtBody = (req, res, next) => {
 
 	if (!year_of_installation || isNaN(Number(year_of_installation)))
 		return res.status(400).json({ error: "Year of installation must be a valid number." });
-
-	next();
-};
-
-export const validateLocationBody = (req, res, next) => {
-	const { site_address, neighbourhood } = req.body;
-
-	if (!site_address || site_address.trim().length <= 0)
-		return res.status(400).json({ error: "Site address is required." });
-
-	if (!neighbourhood || neighbourhood.trim().length <= 0)
-		return res.status(400).json({ error: "Neighbourhood is required." });
-
-	next();
-};
-
-export const validatePhotoBody = (req, res, next) => {
-	const { art_id, photo_url, width, height } = req.body;
-
-	if (!art_id || isNaN(Number(art_id)))
-		return res.status(400).json({ error: "Art id is required and must be a number" });
-
-	if (photo_url && photo_url.trim().length <= 0) return res.status(400).json({ error: "Photo url is required." });
-
-	if (!width || isNaN(Number(width))) return res.status(400).json({ error: "Width is required and must be a number" });
-
-	if (!height || isNaN(Number(height)))
-		return res.status(400).json({ error: "Height is required and must be a number" });
 
 	next();
 };

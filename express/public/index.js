@@ -1701,12 +1701,57 @@ const Create = ({ setMode })=>{
                 lineNumber: 76,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
-                title: "Status",
-                name: "status",
-                value: status,
-                onChange: handleChange
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                htmlFor: "status",
+                className: "inputs",
+                children: [
+                    "Status",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                        value: status,
+                        onChange: handleChange,
+                        name: "status",
+                        id: "status",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "",
+                                children: "All"
+                            }, void 0, false, {
+                                fileName: "src/components/Create.jsx",
+                                lineNumber: 80,
+                                columnNumber: 6
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "In place",
+                                children: "In place"
+                            }, void 0, false, {
+                                fileName: "src/components/Create.jsx",
+                                lineNumber: 81,
+                                columnNumber: 6
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "No longer in place",
+                                children: "No longer in place"
+                            }, void 0, false, {
+                                fileName: "src/components/Create.jsx",
+                                lineNumber: 82,
+                                columnNumber: 6
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "Deaccessioned",
+                                children: "Deaccessioned"
+                            }, void 0, false, {
+                                fileName: "src/components/Create.jsx",
+                                lineNumber: 83,
+                                columnNumber: 6
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Create.jsx",
+                        lineNumber: 79,
+                        columnNumber: 5
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Create.jsx",
                 lineNumber: 77,
                 columnNumber: 4
@@ -1719,14 +1764,14 @@ const Create = ({ setMode })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 78,
+                lineNumber: 86,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Location Information"
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 86,
+                lineNumber: 94,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -1736,7 +1781,7 @@ const Create = ({ setMode })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 87,
+                lineNumber: 95,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -1746,14 +1791,14 @@ const Create = ({ setMode })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 88,
+                lineNumber: 96,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Photo Information"
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 90,
+                lineNumber: 98,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -1763,7 +1808,7 @@ const Create = ({ setMode })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 91,
+                lineNumber: 99,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -1774,7 +1819,7 @@ const Create = ({ setMode })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 92,
+                lineNumber: 100,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -1785,7 +1830,7 @@ const Create = ({ setMode })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 93,
+                lineNumber: 101,
                 columnNumber: 4
             }, undefined),
             errors.global && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -1795,7 +1840,7 @@ const Create = ({ setMode })=>{
                 children: errors.global
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 95,
+                lineNumber: 103,
                 columnNumber: 22
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -1809,7 +1854,7 @@ const Create = ({ setMode })=>{
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "src/components/Create.jsx",
-                        lineNumber: 98,
+                        lineNumber: 106,
                         columnNumber: 5
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -1817,13 +1862,13 @@ const Create = ({ setMode })=>{
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/Create.jsx",
-                        lineNumber: 101,
+                        lineNumber: 109,
                         columnNumber: 5
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Create.jsx",
-                lineNumber: 97,
+                lineNumber: 105,
                 columnNumber: 4
             }, undefined)
         ]
@@ -2124,18 +2169,11 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 lineNumber: 64,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h2", {
-                children: "Art Information"
-            }, void 0, false, {
-                fileName: "src/components/Edit.jsx",
-                lineNumber: 65,
-                columnNumber: 4
-            }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Art Information"
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 66,
+                lineNumber: 65,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -2145,7 +2183,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 68,
+                lineNumber: 67,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _textareaDefault.default), {
@@ -2155,17 +2193,62 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 70,
+                lineNumber: 69,
                 columnNumber: 4
             }, undefined),
-            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
-                title: "Status",
-                name: "status",
-                value: status,
-                onChange: handleChange
-            }, void 0, false, {
+            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
+                htmlFor: "status",
+                className: "inputs",
+                children: [
+                    "Status",
+                    /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("select", {
+                        value: status,
+                        onChange: handleChange,
+                        name: "status",
+                        id: "status",
+                        children: [
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "",
+                                children: "All"
+                            }, void 0, false, {
+                                fileName: "src/components/Edit.jsx",
+                                lineNumber: 74,
+                                columnNumber: 6
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "In place",
+                                children: "In place"
+                            }, void 0, false, {
+                                fileName: "src/components/Edit.jsx",
+                                lineNumber: 75,
+                                columnNumber: 6
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "No longer in place",
+                                children: "No longer in place"
+                            }, void 0, false, {
+                                fileName: "src/components/Edit.jsx",
+                                lineNumber: 76,
+                                columnNumber: 6
+                            }, undefined),
+                            /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
+                                value: "Deaccessioned",
+                                children: "Deaccessioned"
+                            }, void 0, false, {
+                                fileName: "src/components/Edit.jsx",
+                                lineNumber: 77,
+                                columnNumber: 6
+                            }, undefined)
+                        ]
+                    }, void 0, true, {
+                        fileName: "src/components/Edit.jsx",
+                        lineNumber: 73,
+                        columnNumber: 5
+                    }, undefined)
+                ]
+            }, void 0, true, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 72,
+                lineNumber: 71,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -2176,7 +2259,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 74,
+                lineNumber: 81,
                 columnNumber: 4
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -2186,7 +2269,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 children: error
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 82,
+                lineNumber: 89,
                 columnNumber: 14
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -2200,7 +2283,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "src/components/Edit.jsx",
-                        lineNumber: 85,
+                        lineNumber: 92,
                         columnNumber: 5
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -2208,13 +2291,13 @@ const Edit = ({ setMode, picked, setPicked })=>{
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/Edit.jsx",
-                        lineNumber: 88,
+                        lineNumber: 95,
                         columnNumber: 5
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 84,
+                lineNumber: 91,
                 columnNumber: 4
             }, undefined)
         ]

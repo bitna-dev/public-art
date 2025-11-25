@@ -62,14 +62,21 @@ const Edit = ({ setMode, picked, setPicked }) => {
 	return (
 		<form onSubmit={handleSubmit}>
 			<h2>Edit Art</h2>
-			<h2>Art Information</h2>
 			<h3>Art Information</h3>
 
 			<Input title="Title" name="title" value={title} onChange={handleChange} />
 
 			<Textarea title="Artist Statement" name="artist_statement" value={artist_statement} onChange={handleChange} />
 
-			<Input title="Status" name="status" value={status} onChange={handleChange} />
+			<label htmlFor="status" className="inputs">
+				Status
+				<select value={status} onChange={handleChange} name="status" id="status">
+					<option value="">All</option>
+					<option value="In place">In place</option>
+					<option value="No longer in place">No longer in place</option>
+					<option value="Deaccessioned">Deaccessioned</option>
+				</select>
+			</label>
 
 			<Input
 				title="Year of Installation"
