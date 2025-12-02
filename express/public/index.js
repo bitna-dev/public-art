@@ -2069,7 +2069,6 @@ const Detail = ({ setMode, picked, setPicked })=>{
                     }, undefined),
                     " ",
                     picked?.location?.site_address,
-                    " ",
                     picked.location?.neighbourhood && picked.location?.neighbourhood
                 ]
             }, void 0, true, {

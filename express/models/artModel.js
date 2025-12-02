@@ -1,6 +1,6 @@
 import { DatabaseSync } from "node:sqlite";
 import path from "node:path";
-const db = new DatabaseSync(path.join(import.meta.dirname, "../data/vancouver_art.db"));
+const db = new DatabaseSync(path.join(import.meta.dirname, "../data/data.db"));
 
 // https://www.sqlitetutorial.net/sqlite-functions/sqlite-lower/
 
