@@ -11,7 +11,7 @@ app.use("/api/v1", router);
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
 // when landed not /api/v1
-app.use("*", (req, res) => {
+app.use("/*path", (req, res) => {
 	res.sendFile(path.join(import.meta.dirname, "public", "index.html"));
 });
 
