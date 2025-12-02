@@ -1622,7 +1622,7 @@ const Create = ({ setMode })=>{
         height: ""
     });
     const { title, artist_statement, status, year_of_installation, site_address, neighbourhood, photo_url, width, height } = inputs;
-    const [errors, setErrors] = (0, _react.useState)({});
+    const [error, setError] = (0, _react.useState)("");
     const [loading, setLoading] = (0, _react.useState)(false);
     const handleChange = (e)=>{
         const { name, value } = e.target;
@@ -1630,36 +1630,28 @@ const Create = ({ setMode })=>{
             ...inputs,
             [name]: value
         });
-        setErrors((prev)=>({
-                ...prev,
-                [name]: null,
-                global: null
-            }));
+        setError("");
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setLoading(true);
-        setErrors({});
+        setError("");
         try {
-            const res1 = await (await fetch("/api/v1/arts", {
+            const res = await (await fetch("/api/v1/arts", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(inputs)
             })).json();
-            if (!res1.success) {
-                setErrors({
-                    global: res1.error
-                });
+            if (!res.success) {
+                setError(res.error || "Failed to create art!");
                 return;
             }
             setMode(null);
         } catch (err) {
             console.error("Error: ", err);
-            setErrors({
-                global: res.error
-            });
+            setError(err.message);
         } finally{
             setLoading(false);
         }
@@ -1833,15 +1825,15 @@ const Create = ({ setMode })=>{
                 lineNumber: 101,
                 columnNumber: 4
             }, undefined),
-            errors.global && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
+            error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
                 style: {
                     color: "red"
                 },
-                children: errors.global
+                children: error
             }, void 0, false, {
                 fileName: "src/components/Create.jsx",
                 lineNumber: 103,
-                columnNumber: 22
+                columnNumber: 14
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
                 style: {
@@ -2129,6 +2121,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
             ...inputs,
             [name]: value
         });
+        setError("");
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
@@ -2166,14 +2159,14 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 children: "Edit Art"
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 64,
+                lineNumber: 65,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("h3", {
                 children: "Art Information"
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 65,
+                lineNumber: 66,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -2183,7 +2176,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 67,
+                lineNumber: 68,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _textareaDefault.default), {
@@ -2193,7 +2186,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 69,
+                lineNumber: 70,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("label", {
@@ -2212,7 +2205,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                                 children: "All"
                             }, void 0, false, {
                                 fileName: "src/components/Edit.jsx",
-                                lineNumber: 74,
+                                lineNumber: 75,
                                 columnNumber: 6
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -2220,7 +2213,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                                 children: "In place"
                             }, void 0, false, {
                                 fileName: "src/components/Edit.jsx",
-                                lineNumber: 75,
+                                lineNumber: 76,
                                 columnNumber: 6
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -2228,7 +2221,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                                 children: "No longer in place"
                             }, void 0, false, {
                                 fileName: "src/components/Edit.jsx",
-                                lineNumber: 76,
+                                lineNumber: 77,
                                 columnNumber: 6
                             }, undefined),
                             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("option", {
@@ -2236,19 +2229,19 @@ const Edit = ({ setMode, picked, setPicked })=>{
                                 children: "Deaccessioned"
                             }, void 0, false, {
                                 fileName: "src/components/Edit.jsx",
-                                lineNumber: 77,
+                                lineNumber: 78,
                                 columnNumber: 6
                             }, undefined)
                         ]
                     }, void 0, true, {
                         fileName: "src/components/Edit.jsx",
-                        lineNumber: 73,
+                        lineNumber: 74,
                         columnNumber: 5
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 71,
+                lineNumber: 72,
                 columnNumber: 4
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)((0, _inputDefault.default), {
@@ -2259,7 +2252,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 onChange: handleChange
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 81,
+                lineNumber: 82,
                 columnNumber: 4
             }, undefined),
             error && /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("p", {
@@ -2269,7 +2262,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                 children: error
             }, void 0, false, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 89,
+                lineNumber: 90,
                 columnNumber: 14
             }, undefined),
             /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("div", {
@@ -2283,7 +2276,7 @@ const Edit = ({ setMode, picked, setPicked })=>{
                         children: "Cancel"
                     }, void 0, false, {
                         fileName: "src/components/Edit.jsx",
-                        lineNumber: 92,
+                        lineNumber: 93,
                         columnNumber: 5
                     }, undefined),
                     /*#__PURE__*/ (0, _jsxDevRuntime.jsxDEV)("button", {
@@ -2291,19 +2284,19 @@ const Edit = ({ setMode, picked, setPicked })=>{
                         children: "Submit"
                     }, void 0, false, {
                         fileName: "src/components/Edit.jsx",
-                        lineNumber: 95,
+                        lineNumber: 96,
                         columnNumber: 5
                     }, undefined)
                 ]
             }, void 0, true, {
                 fileName: "src/components/Edit.jsx",
-                lineNumber: 91,
+                lineNumber: 92,
                 columnNumber: 4
             }, undefined)
         ]
     }, void 0, true, {
         fileName: "src/components/Edit.jsx",
-        lineNumber: 63,
+        lineNumber: 64,
         columnNumber: 3
     }, undefined);
 };

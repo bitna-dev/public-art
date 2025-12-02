@@ -30,19 +30,19 @@ const Create = ({ setMode }) => {
 		height,
 	} = inputs;
 
-	const [errors, setErrors] = useState({});
+	const [error, setError] = useState("");
 	const [loading, setLoading] = useState(false);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setInputs({ ...inputs, [name]: value });
-		setErrors((prev) => ({ ...prev, [name]: null, global: null }));
+		setError("");
 	};
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		setLoading(true);
-		setErrors({});
+		setError("");
 
 		try {
 			const res = await (
@@ -54,14 +54,14 @@ const Create = ({ setMode }) => {
 			).json();
 
 			if (!res.success) {
-				setErrors({ global: res.error });
+				setError(res.error || "Failed to create art!");
 				return;
 			}
 
 			setMode(null);
 		} catch (err) {
 			console.error("Error: ", err);
-			setErrors({ global: res.error });
+			setError(err.message);
 		} finally {
 			setLoading(false);
 		}
@@ -100,7 +100,7 @@ const Create = ({ setMode }) => {
 			<Input title="Width" type="number" name="width" value={width} onChange={handleChange} />
 			<Input title="Height" type="number" name="height" value={height} onChange={handleChange} />
 
-			{errors.global && <p style={{ color: "red" }}>{errors.global}</p>}
+			{error && <p style={{ color: "red" }}>{error}</p>}
 
 			<div style={{ display: "flex" }}>
 				<button disabled={loading} onClick={() => setMode(null)}>

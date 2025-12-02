@@ -27,6 +27,7 @@ const Edit = ({ setMode, picked, setPicked }) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setInputs({ ...inputs, [name]: value });
+		setError("");
 	};
 
 	const handleSubmit = async (e) => {
