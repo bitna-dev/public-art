@@ -10,4 +10,10 @@ app.use("/api/v1", router);
 
 app.use(express.static(path.join(import.meta.dirname, "public")));
 
+// when landed not /api/v1
+// https://expressjs.com/en/guide/migrating-5.html
+app.use("/*path", (req, res) => {
+	res.sendFile(path.join(import.meta.dirname, "public", "index.html"));
+});
+
 const server = app.listen(3000, () => console.log("listening"));

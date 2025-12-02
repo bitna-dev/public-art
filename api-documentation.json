@@ -1,0 +1,166 @@
+{
+	"info": {
+		"_postman_id": "9fd130ca-a128-47c7-b4ae-aa513761cb99",
+		"name": "WMDD4935 Term Project - Bitna Lee",
+		"description": "# Van Artwork Explorer - API Documentation\n\nThis postman collection contains all API endpoints for the WMDD 4936 Term Project.\n\nA web application built with Node.js, Express, SQLite, and React.js.\n\nThe API provides access to Vancouver Public Art data imported from the Vancouver Open Data Portal.\n\n## Base URL\n\n[https://vancouver-public-art.onrender.com/](https://vancouver-public-art.onrender.com/)\n\nAll requests automatically references: {{baseUrl}}/api/v1/arts/...\n\n## Endpoints Overview\n\nThe API follows REST conventions and includes the following routes:\n\n### GET Endpoints\n\n1. GET api/v1/arts - returns a lit of arts, 10 per page, supports optional filtering by status.\n    \n2. GET api/v1/arts/:id - returns detailed information for a single art.\n    \n\n## POST Endpoints\n\n1. POST api/v1/arts - creates a new art, requires JSON body with fileds such as title, status, year, location, and image.\n    \n\n## PATCH Endpoints\n\n1. PATCH api/v1/arts/:id - updates an existing art, accepts a JSON body with the fields to update.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "31902089"
+	},
+	"item": [
+		{
+			"name": "Get All Arts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/arts?status=In Place&page=2",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"arts"
+					],
+					"query": [
+						{
+							"key": "status",
+							"value": "In Place"
+						},
+						{
+							"key": "page",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get One Art",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/v1/arts/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"arts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "717"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Creat Art",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Sunset Harmony\",\n  \"artist_statement\": \"This artwork represents the balance between nature and urban life, showing how both coexist in Vancouver’s everyday environment.\",\n  \"status\": \"In place\",\n  \"year_of_installation\": 2018,\n\n  \"site_address\": \"123 Beach Avenue\",\n  \"neighbourhood\": \"West End\",\n\n  \"photo_url\": \"https://images-dh-production-baselayer.dailyhive.com/uploads/2019/01/vancouver-sunset-january-25-2019.jpg?format=auto&width=988\",\n  \"width\": 300,\n  \"height\": 200\n\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/arts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"arts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update Art",
+			"request": {
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"title\": \"Sunset Harmony In The Spot\",\n  \"year_of_installation\": 2000\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/v1/arts/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"v1",
+						"arts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "717"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "id",
+			"value": "1"
+		},
+		{
+			"key": "base_url",
+			"value": "https://template.postman-echo.com"
+		}
+	]
+}

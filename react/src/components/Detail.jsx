@@ -62,7 +62,7 @@ const Detail = ({ setMode, picked, setPicked }) => {
 
 			{picked?.location?.site_address && (
 				<p>
-					<span>Address: </span> {picked?.location?.site_address}{" "}
+					<span>Address: </span> {picked?.location?.site_address}
 					{picked.location?.neighbourhood && picked.location?.neighbourhood}
 				</p>
 			)}
