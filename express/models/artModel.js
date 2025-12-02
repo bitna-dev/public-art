@@ -7,18 +7,19 @@ const db = new DatabaseSync(path.join(import.meta.dirname, "../data/vancouver_ar
 const getArts = (status, offset) => {
 	if (status) {
 		return db
-			.prepare("SELECT * FROM overview WHERE lower(status) = ? ORDER BY art_id ASC LIMIT 10 OFFSET ?")
+			.prepare("SELECT * FROM overview WHERE LOWER(status) = LOWER(?) ORDER BY art_id ASC LIMIT 10 OFFSET ?")
 			.all(status, offset);
 	}
 	return db.prepare("SELECT * FROM overview ORDER BY art_id ASC LIMIT 10 OFFSET ?").all(offset);
 };
 const getOneArt = (id) => {
-	const data = db.prepare("SELECT * FROM detail_overview WHERE art_id = ?").all(id);
+	const data = db.prepare("SELECT * FROM detail_overview WHERE art_id = ?").get(id);
 
-	if (!data || data.length == 0) {
+	if (!data) {
 		return null;
 	}
 
+	// reshaped to use it easily in frontend
 	const {
 		art_id,
 		title,
@@ -30,7 +31,7 @@ const getOneArt = (id) => {
 		width,
 		height,
 		photo_url,
-	} = data[0];
+	} = data;
 
 	return {
 		art_id,
@@ -50,13 +51,15 @@ const getOneArt = (id) => {
 	};
 };
 
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/keys
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+
 const updateArt = (id, payload) => {
 	const fields = Object.keys(payload)
 		.map((key) => `${key} = ?`)
 		.join(", ");
 
 	const values = Object.values(payload);
-
 	const data = db.prepare(`UPDATE art SET ${fields} WHERE art_id = ?`);
 
 	return data.run(...values, id);
@@ -68,23 +71,29 @@ const updateArt = (id, payload) => {
 // 		.all(status, offset);
 // };
 
+/*
+	Aggregation, GROUPBY and JOIN
+	It will not be used for any endpoints.
+	only for meeting DB project.
+*/
 const countArtsByNeighbourhood = () => {
 	return db
 		.prepare(
 			`
-    SELECT neighbourhood, COUNT(*) AS total_art 
-    FROM locations
-    JOIN art ON art.location_id = locations.location_id
-    GROUP BY neighbourhood
-    ORDER BY total_art DESC;
-  `
+			SELECT neighbourhood, COUNT(*) AS total_art 
+			FROM locations
+			JOIN art ON art.location_id = locations.location_id
+			GROUP BY neighbourhood
+			ORDER BY total_art DESC;
+  			`
 		)
 		.all();
 };
 
 // Transaction
 /*
-	one of fields is not working, whole of it will be rollbacked.
+	one of fields is not working, whole of it will be rollback.
+	it will be used in create art.
 */
 const createArt = (payload) => {
 	const {
@@ -114,12 +123,13 @@ const createArt = (payload) => {
 
 		const location_id = loc.lastInsertRowid;
 
+		// art
 		const art = db
 			.prepare(
 				`
             INSERT INTO art (title, artist_statement, status, location_id, year_of_installation)
             VALUES (?, ?, ?, ?, ?)
-        `
+        		`
 			)
 			.run(title, artist_statement, status, location_id, year_of_installation);
 
@@ -129,7 +139,7 @@ const createArt = (payload) => {
 			`
             INSERT INTO photos (art_id, width, height, photo_url)
             VALUES (?, ?, ?, ?)
-        `
+        	`
 		).run(art_id, width, height, photo_url);
 
 		db.exec("COMMIT");

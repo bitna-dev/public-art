@@ -7,7 +7,7 @@ const calcOffset = (page) => {
 const getArts = (req, res) => {
 	const page = req.query.page || 1;
 	const offset = calcOffset(page);
-	const status = req.query.status ? req.query.status.toLowerCase() : "";
+	const status = req.query.status ? req.query.status : "";
 
 	const data = artModel.getArts(status, offset);
 	res.status(200).json(data);
@@ -15,29 +15,39 @@ const getArts = (req, res) => {
 
 const getOneArt = (req, res) => {
 	const { id } = req.params;
+	const data = artModel.getOneArt(id);
 
-	if (!id)
+	if (!data)
 		return res.status(404).json({
 			message: "No art found",
 		});
-
-	const data = artModel.getOneArt(id);
 
 	res.status(200).json(data);
 };
 
 const createArt = (req, res) => {
-	const payload = req.body;
-	console.log(payload);
-
-	const data = artModel.createArt(payload);
-	res.status(201).json(data);
+	try {
+		const payload = req.body;
+		const data = artModel.createArt(payload);
+		res.status(201).json({ success: true, ...data });
+	} catch (err) {
+		console.error(err);
+		return res.status(500).json({ success: false, error: "Failed to create art" });
+	}
 };
 
 const updateArt = (req, res) => {
-	const { id } = req.params;
-	artModel.updateArt(id, req.body);
-	res.status(200).json({ success: true, message: `Art ${id} is updated` });
+	try {
+		const { id } = req.params;
+		const data = artModel.updateArt(id, req.body);
+		if (data.changes == 0) {
+			return res.status(404).json({ success: false, error: "Art not found" });
+		}
+		return res.status(200).json({ success: true, message: `Art ${id} is updated.` });
+	} catch (err) {
+		console.error(err);
+		return res.status(500).json({ success: false, error: "Failed to update art" });
+	}
 };
 
 // const getArtByStatus = (req, res) => {

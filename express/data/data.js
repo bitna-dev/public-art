@@ -3,7 +3,7 @@ import publicArt from "./public-art.json" with {type: "json"};
 import {DatabaseSync} from "node:sqlite";
 import path from "node:path";
 
-const db = new DatabaseSync(path.join(import.meta.dirname, "/vancouver_art.db"), {enableForeignKeyConstraints: false});
+const db = new DatabaseSync(path.join(import.meta.dirname, "data.db"), {enableForeignKeyConstraints: false});
 
 /*
     art
@@ -61,7 +61,7 @@ publicArt.forEach(item => {
     `).run(
         item.title_of_work || null,
         item.artistprojectstatement || null,
-        item.status || null,
+        item.status,
         locationId,
         item.yearofinstallation || null
     );
@@ -70,6 +70,7 @@ publicArt.forEach(item => {
 
     if(Array.isArray(item.artists)){
         item.artists.forEach(artistId => {
+            // https://www.delftstack.com/howto/sqlite/sqlite-insert-or-ignore/
             db.prepare(`
                 INSERT OR IGNORE INTO artist (artist_id, name)
                 VALUES(?, NULL);

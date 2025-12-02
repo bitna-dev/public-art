@@ -60,8 +60,5 @@ export const validateEditArtBody = (req, res, next) => {
 	if (artist_statement !== undefined && artist_statement.trim().length <= 10)
 		return res.status(400).json({ error: "Artist statement must be longer than 10 characters." });
 
-	if (!year_of_installation || isNaN(Number(year_of_installation)))
-		return res.status(400).json({ error: "Year of installation must be a valid number." });
-
 	next();
 };
